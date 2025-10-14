@@ -1,13 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Simple E-Commerce Product Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 40px;
+    }
+
+    .product-container {
+      display: flex;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-details {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .product-title {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 26px;
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    .product-description {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .product-options {
+      margin-bottom: 20px;
+    }
+
+    select, input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .add-to-cart {
+      padding: 15px;
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: #457b9d;
+    }
+
+    .cart-message {
+      margin-top: 20px;
+      font-size: 16px;
+      color: green;
+    }
+
+    @media (max-width: 768px) {
+      .product-container {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Our Products</h1>
-    <div id="product-list" class="product-list"></div>
-    <script src="script.js"></script>
+
+  <div class="product-container">
+    <div class="product-image">
+      <img src="https://via.placeholder.com/500x500.png?text=Product+Image" alt="Wireless Headphones">
+    </div>
+    <div class="product-details">
+      <h1 class="product-title">Wireless Bluetooth Headphones</h1>
+      <p class="product-price">$99.99</p>
+      <p class="product-description">
+        Experience the freedom of wireless audio with these high-fidelity Bluetooth headphones. Noise-canceling, lightweight, and perfect for travel or work-from-home.
+      </p>
+
+      <div class="product-options">
+        <label for="color">Color:</label>
+        <select id="color">
+          <option>Black</option>
+          <option>White</option>
+          <option>Blue</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1">
+      </div>
+
+      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+      <div class="cart-message" id="cart-message"></div>
+    </div>
+  </div>
+
+  <script>
+    function addToCart() {
+      const color = document.getElementById("color").value;
+      const quantity = document.getElementById("quantity").value;
+      const message = `Added ${quantity} item(s) of color ${color} to cart.`;
+      document.getElementById("cart-message").textContent = message;
+    }
+  </script>
+
 </body>
 </html>
